@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tan-dara5304-react-gitlad-test-deployment
+  labels:
+    app: tan-dara5304-react-gitlad-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tan-dara5304-react-gitlad-test
+  template:
+    metadata:
+      labels:
+        app: tan-dara5304-react-gitlad-test
+    spec:
+      containers:
+        - name: tan-dara5304-react-gitlad-test-container
+          image: pipejet/tan-dara5304-react-gitlad-test:0
+          ports:
+            - containerPort: 3000
