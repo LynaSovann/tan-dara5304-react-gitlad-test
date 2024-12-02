@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tan-dara5304-react-gitlad-test-https-ingress
+  namespace: tan-dara5304-react-gitlad-test
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - tan-dara5304-react-gitlad-test.assessify.org
+      secretName: tan-dara5304-react-gitlad-test-secret-tls
+  rules:
+    - host: tan-dara5304-react-gitlad-test.assessify.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tan-dara5304-react-gitlad-test-service
+                port:
+                  number: 8321
