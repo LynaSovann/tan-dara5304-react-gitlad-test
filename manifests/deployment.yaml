@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: tan-dara5304-react-gitlad-test-container
-          image: pipejet/tan-dara5304-react-gitlad-test:1
+          image: pipejet/tan-dara5304-react-gitlad-test:2
           ports:
             - containerPort: 3000
