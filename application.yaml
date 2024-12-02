@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tan-dara5304-react-gitlad-test
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.telegram: "-1002195638358"
+    notifications.argoproj.io/subscribe.on-sync-failed.telegram: "-1002195638358"
+    notifications.argoproj.io/subscribe.on-deleted.telegram: "-1002195638358"
+    notifications.argoproj.io/on-health-degraded.telegram: "-1002195638358"
+    notifications.argoproj.io/subscribe.on-sync-succeeded.updateDeploymentStatusWebhook: ""
+    notifications.argoproj.io/subscribe.on-sync-succeeded.gmail: tandara120403@gmail.com
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/LynaSovann/tan-dara5304-react-gitlad-test.git
+    targetRevision: main
+    path: manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tan-dara5304-react-gitlad-test
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  revisionHistoryLimit: 5
